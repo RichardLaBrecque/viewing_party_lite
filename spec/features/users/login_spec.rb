@@ -38,4 +38,17 @@ RSpec.describe 'user log in' do
     expect(current_path).to eq("/login")
     expect(page).to have_content("INVALID PASSWORD")
   end
+
+  it 'has a log out button' do
+    user = User.create!(name: "User1", email: "user1@user1.com", password: "user1", password_confirmation: "user1")
+    visit '/login'
+    fill_in 'Email', with: "user1@user1.com"
+    fill_in 'Password', with: "user1"
+    click_on 'Log In'
+    visit '/'
+    expect(page).to have_button("Log out")
+    click_on("Log out")
+    expect(current_path).to eq("/")
+    expect(page).to have_button("Log In")
+  end
 end
