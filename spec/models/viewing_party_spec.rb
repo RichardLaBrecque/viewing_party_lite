@@ -9,14 +9,14 @@ RSpec.describe ViewingParty do
   end
   describe 'self check'do
     it 'should assign the duration of a movie after validations', :vcr do
-      user = User.create(name: 'test name', email: 'test@yahoo.com')
+      user = User.create(name: 'test name', email: 'test@yahoo.com', password: "user1", password_confirmation: "user1")
       vp = ViewingParty.create(user: user, date_time: '2022-03-21 22:02:34', movie_id: 143)
       expect(vp.duration).to eq(133)
     end
   end
   describe 'instance method', :vcr do
     it 'knows its endtime' do
-      user = User.create(name: 'test name', email: 'test@yahoo.com')
+      user = User.create(name: 'test name', email: 'test@yahoo.com', password: "user1", password_confirmation: "user1")
       vp = ViewingParty.create(user: user, date_time: '2022-03-21 22:02:34', movie_id: 143)
       expect(vp.end_time).to eq("12:15 AM")
     end

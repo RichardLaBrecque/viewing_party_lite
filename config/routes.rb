@@ -2,12 +2,13 @@
 
 Rails.application.routes.draw do
   get '/', to: 'welcome#index'
-  get '/login', to: 'users#login_form'
-  post '/login', to: 'users#login_user'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
   get '/register', to: 'users#new'
   post '/register', to: 'users#create'
-  get '/users/:id/discover', to: 'users#discover'
-  post '/users/:id/movies', to: 'movies#index'
+  get '/discover', to: 'users#discover'
+  post '/movies', to: 'movies#index'
+  get '/dashboard', to: 'users#show'
   resources :users do
     resources :movies, only: [:index, :show]
     resources :viewing_parties, only: [:new, :index, :show]

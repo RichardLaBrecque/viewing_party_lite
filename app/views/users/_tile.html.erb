@@ -6,8 +6,8 @@
             <div class="card-title">
                 <h4><%=movie.title%></h4>
             </div>
-            <div class="card-body"> 
-            
+            <div class="card-body">
+
             <a href = <%= party.class == ViewingParty ? user_viewing_party_path(@user, party) : user_viewing_party_path(@user, party.viewing_party)%>>
                 <img class="card-img-top" src=<%= "https://image.tmdb.org/t/p/original/#{movie.poster_path}"%>>
             </a>
@@ -18,8 +18,8 @@
                         <div class=" d-flex justify-content-center">
                             <h5>Host</h5>
                         </div>
-                        <%  party.try(:viewing_party).nil? ? host = party.user : host = party.viewing_party.user%> 
-                            <% if host.id!= params[:id].to_i %>
+                        <%  party.try(:viewing_party).nil? ? host = party.user : host = party.viewing_party.user%>
+                            <% if host.id!= session[:user_id].to_i %>
                                 <%=link_to(user_path(host)) do %>
                                 <li class="list-group-item"><%= host.name%></li>
                                 <%end%>

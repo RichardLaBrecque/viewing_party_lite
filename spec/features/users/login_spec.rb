@@ -14,7 +14,7 @@ RSpec.describe 'user log in' do
     fill_in 'Password', with: "user1"
     click_on 'Log In'
 
-    expect(current_path).to eq("/users/#{user.id}")
+    expect(current_path).to eq("/dashboard")
   end
 
   it 'has an error for a bad email' do

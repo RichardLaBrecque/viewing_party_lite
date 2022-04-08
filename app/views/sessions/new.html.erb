@@ -1,0 +1,7 @@
+<%= form_with model: @user, local: true do |form| %>
+<p><%= form.label :email %>
+  <%= form.email_field :email %></p>
+<p><%= form.label :password %>
+  <%= form.password_field :password %></p>
+<p><%= form.submit 'Log In'%></p>
+<% end %>

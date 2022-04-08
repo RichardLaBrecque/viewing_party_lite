@@ -16,10 +16,10 @@ RSpec.describe 'the landing page' do
   end
 
   it 'displays all current registered users' do
-    u1 = User.create!(name: 'Mr 1', email: 'Test1@test.com')
-    u2 = User.create!(name: 'Mrs 2', email: 'Test2@test.com')
-    u3 = User.create!(name: 'Mrs 3', email: 'Test3@test.com')
-    u4 = User.create!(name: 'Mr 4', email: 'Test4@test.com')
+    u1 = User.create!(name: 'Mr 1', email: 'Test1@test.com', password: "test", password_confirmation: "test")
+    u2 = User.create!(name: 'Mrs 2', email: 'Test2@test.com', password: "test", password_confirmation: "test")
+    u3 = User.create!(name: 'Mrs 3', email: 'Test3@test.com', password: "test", password_confirmation: "test")
+    u4 = User.create!(name: 'Mr 4', email: 'Test4@test.com', password: "test", password_confirmation: "test")
     visit '/'
     within '.registered' do
       expect(page).to have_content(u1.name)

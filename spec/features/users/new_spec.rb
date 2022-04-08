@@ -9,7 +9,7 @@ RSpec.describe 'creating a new user' do
     fill_in 'password_confirmation', with: "test"
     click_on "Save"
     user = User.last
-    expect(current_path).to eq("/users/#{user.id}")
+    expect(current_path).to eq("/dashboard")
 
   end
   it 'has a give an error for bad user creation' do

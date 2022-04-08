@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'movie show page' do
   before :each do
-    @user = User.create!(name: 'Bob', email: 'bob@yahoo.com')
+    @user = User.create!(name: 'Bob', email: 'bob@yahoo.com', password: "test", password_confirmation: "test")
   end
   it 'will show a movies duration', :vcr do
     visit(user_movie_path(@user, 235))
@@ -36,7 +36,7 @@ RSpec.describe 'movie show page' do
     expect(page).to have_content('River Phoenix as Chris Chambers')
     expect(page).to have_content('Corey Feldman as Teddy Duchamp')
   end
-  it 'will have a button that will direct to a new viewing party form', :vcr do 
+  it 'will have a button that will direct to a new viewing party form', :vcr do
     visit(user_movie_path(@user, 235))
     expect(page).to have_button("Create Viewing Party for Stand by Me")
     click_button("Create Viewing Party for Stand by Me")

@@ -33,3 +33,5 @@
 /coverage
 # ignore api key
 config/application.yml
+# Ignore application configuration
+/config/application.yml
